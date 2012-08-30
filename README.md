@@ -31,3 +31,11 @@ DynamicJsonについて
 　http://neue.cc/  
 　http://dynamicjson.codeplex.com/  
   こちらをご参照ください。  
+  
+ライセンスについて
+---------------------
+　ライセンスはDinamicJsonと同じMs-PLに準規します。  
+　Ms-PLって何？って人は  
+　http://wpf.codeplex.com/license  
+　を読むorぐぐってください。
+　
