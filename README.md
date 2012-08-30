@@ -21,3 +21,10 @@ DynamicJsonを製作したneueccさんに感謝！
 ライブラリの使い方
 　ライブラリに書かれているコメントをさんｓｈ(ry
 　ごめんなさい。ちゃんと書きます。時間ができ次第作ります。
+　
+DynamicJsonについて
+　ライブラリ内に同梱しています。
+　詳細については、
+　http://neue.cc/
+  http://dynamicjson.codeplex.com/
+  こちらをご参照ください。
