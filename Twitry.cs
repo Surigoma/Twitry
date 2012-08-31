@@ -41,8 +41,8 @@ namespace Twitry
         private const string AuthorizeURL = "https://api.twitter.com/oauth/authorize";
         private const string AccessTokenURL = "https://api.twitter.com/oauth/access_token";
 
-        private const string ConsumerKey = "Ji0zcRyyjTWh8O00AfiqA";
-        private const string ConsumerSecret = "6xQL0wiMinEtAwBrp8aR6FOIrkcweEzC8Y8jqdHsDaM";
+        private const string ConsumerKey = "";
+        private const string ConsumerSecret = "";
 
         public string AccessToken = "";
         public string AccessTokenSecret = "";
