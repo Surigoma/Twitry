@@ -584,12 +584,10 @@ namespace Twitry
                 {
                     //Console.WriteLine("誰かが何かをしました。");
                     Target result;
-                    UserAUser UAU;
                     TweetAUser TAU;
                     ListAUser LAU;
                     UserList UL;
                     User U;
-                    Tweet T;
                     switch ((string)twitterjson["event"])
                     {
                         case "follow":
@@ -609,32 +607,62 @@ namespace Twitry
                             break;
                         case "unblock":
                             U = new User(twitterjson["source"].ToString());
-                            result = CreateTarget("Block", 3, U, DateStringToDataTime(twitterjson["created_at"]));
+                            result = CreateTarget("Block", 4, U, DateStringToDataTime(twitterjson["created_at"]));
                             TargetEvent(result);
                             break;
                         case "favorite":
                             TAU = new TweetAUser();
                             TAU.Tweet = new Tweet(twitterjson["target_object"].ToString());
                             TAU.User = new User(twitterjson["source"].ToString());
-                            result = CreateTarget("Favorite", 4, TAU, DateStringToDataTime(twitterjson["created_at"]));
+                            result = CreateTarget("Favorite", 5, TAU, DateStringToDataTime(twitterjson["created_at"]));
                             TargetEvent(result);
                             break;
                         case "unfavorite":
                             TAU = new TweetAUser();
                             TAU.Tweet = new Tweet(twitterjson["target_object"].ToString());
                             TAU.User = new User(twitterjson["source"].ToString());
-                            result = CreateTarget("Favorite", 4, TAU, DateStringToDataTime(twitterjson["created_at"]));
+                            result = CreateTarget("Favorite", 6, TAU, DateStringToDataTime(twitterjson["created_at"]));
                             TargetEvent(result);
                             break;
                         case "list_created":
                             UL = new UserList(twitterjson["target_object"].ToString());
-                            result = CreateTarget("ListCreated", 5, UL, DateStringToDataTime(twitterjson["created_at"]));
+                            result = CreateTarget("ListCreated", 7, UL, DateStringToDataTime(twitterjson["created_at"]));
                             TargetEvent(result);
                             break;
                         case "list_destroyed":
                             UL = new UserList(twitterjson["target_object"].ToString());
-                            result = CreateTarget("ListDestroyed", 6, UL, DateStringToDataTime(twitterjson["created_at"]));
+                            result = CreateTarget("ListDestroyed", 8, UL, DateStringToDataTime(twitterjson["created_at"]));
                             TargetEvent(result);
+                            break;
+                        case "list_member_added":
+                            LAU = new ListAUser();
+                            LAU.User = new User(twitterjson["target"].ToString());
+                            LAU.List = new UserList(twitterjson["target_object"].ToString());
+                            result = CreateTarget("ListMemberAdd", 9, LAU, DateStringToDataTime(twitterjson["created_at"]));
+                            break;
+                        case "list_member_removed":
+                            LAU = new ListAUser();
+                            LAU.User = new User(twitterjson["target"].ToString());
+                            LAU.List = new UserList(twitterjson["target_object"].ToString());
+                            result = CreateTarget("ListMemberDel", 10, LAU, DateStringToDataTime(twitterjson["created_at"]));
+                            break;
+                        case "list_updated":
+                            LAU = new ListAUser();
+                            LAU.User = new User(twitterjson["target"].ToString());
+                            LAU.List = new UserList(twitterjson["target_object"].ToString());
+                            result = CreateTarget("ListUpdate", 11, LAU, DateStringToDataTime(twitterjson["created_at"]));
+                            break;
+                        case "list_user_subscribed":
+                            LAU = new ListAUser();
+                            LAU.User = new User(twitterjson["target"].ToString());
+                            LAU.List = new UserList(twitterjson["target_object"].ToString());
+                            result = CreateTarget("ListUserSub", 12, LAU, DateStringToDataTime(twitterjson["created_at"]));
+                            break;
+                        case "list_user_unsubscribed":
+                            LAU = new ListAUser();
+                            LAU.User = new User(twitterjson["target"].ToString());
+                            LAU.List = new UserList(twitterjson["target_object"].ToString());
+                            result = CreateTarget("ListUnSub", 13, LAU, DateStringToDataTime(twitterjson["created_at"]));
                             break;
                         default:
                             Console.WriteLine("何かしたそうです。\n" + twitterjson["event"]);
